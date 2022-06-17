@@ -52,14 +52,13 @@ public class UserResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable String id)  {
+	public ResponseEntity<Void> delete(@PathVariable String id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 
-	
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Void> update(@RequestBody UserDTO objdto, @PathVariable String id) {
 		User obj = service.fromDTO(objdto);
@@ -68,8 +67,7 @@ public class UserResource {
 		return ResponseEntity.noContent().build();
 
 	}
-	
-	
+
 	@RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
 	public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
 
@@ -77,5 +75,5 @@ public class UserResource {
 		return ResponseEntity.ok().body(obj.getPosts());
 
 	}
-	
+
 }
