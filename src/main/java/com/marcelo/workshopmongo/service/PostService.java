@@ -20,4 +20,7 @@ public class PostService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 
+	public Post findByTitle(String text) {
+		return  (Post) repo.searchTitle(text);
+	}
 }
